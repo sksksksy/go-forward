@@ -23,7 +23,7 @@ func IStart() {
 		if err != nil {
 			logger.R().Fatal(err)
 		}
-		go handle(&nconn)
+		go Handle(&nconn)
 		if stop {
 			break
 		}
@@ -32,7 +32,7 @@ func IStart() {
 func Stop() {
 	stop = true
 }
-func handle(conn *net.Conn) {
+func Handle(conn *net.Conn) {
 	connection := *conn
 	remoteAddr := connection.RemoteAddr().String()
 	logger.R().Println("remote connection：" + remoteAddr)
@@ -49,7 +49,7 @@ func handle(conn *net.Conn) {
 		Cname: zpro.Source,
 	}
 	st.AddConn(c)
-	logger.R().Println("zk protocol message is :" + msg)
+	logger.R().Println("zk protocol message is #" + msg)
 	dispatch(*zpro)
 }
 func dispatch(zpro st.ZkPro) {

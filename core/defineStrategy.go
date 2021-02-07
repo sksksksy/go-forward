@@ -36,6 +36,7 @@ func (operator *MessageOperator) setStrategy(strategy HandStrategy) {
 }
 func (operator *MessageOperator) doHand(zpro st.ZkPro) {
 	i := operator.strategy.do(zpro)
+	logger.R().Println("has run in doHand function.")
 	if i == -1 {
 		logger.R().Panic("do hand error.", i)
 	}

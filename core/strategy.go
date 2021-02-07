@@ -13,6 +13,7 @@ func (*heart) do(zpro st.ZkPro) int {
 		logger.R().Println(err)
 		i = -1
 	}
+	Handle(con.Conn)
 	return i
 }
 
